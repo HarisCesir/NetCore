@@ -1,0 +1,23 @@
+﻿@using Elektrodistribucija.Web.Areas.ReferentZaKlijenteModul.ViewModels
+@{
+    ViewData["Title"] = "Cijena";
+    Layout = "~/Views/Shared/_LayoutReferentZaKlijente.cshtml";
+}
+
+<h2>Cijena</h2>
+@model CijenaVM
+<form asp-action="Snimi" asp-controller="Cijena" >
+
+    <div class="form-group">
+        <label asp-for="CijenaKwhJeftina" >Cijena KWH jeftina</label>
+        <input asp-for="CijenaKwhJeftina" type="number" value="@Model.CijenaKwhJeftina" class="form-control" />
+        <span asp-validation-for="CijenaKwhJeftina" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CijenaKwhSkupa">Cijena KwH skupa</label>
+        <input asp-for="CijenaKwhSkupa" type="number" value="@Model.CijenaKwhSkupa" class="form-control" />
+        <span asp-validation-for="CijenaKwhSkupa" class="text-danger"></span>
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Snimi" />
+</form>

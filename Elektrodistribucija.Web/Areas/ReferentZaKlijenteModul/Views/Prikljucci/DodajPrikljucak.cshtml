@@ -1,0 +1,50 @@
+﻿
+@model Elektrodistribucija.Web.Areas.ReferentZaKlijenteModul.ViewModels.PrikljucciVM
+@using Elektrodistribucija.Data.Models;
+@{
+    List<Grad> gradovi = (List<Grad>)ViewData["Gradovi"];
+}
+
+<form asp-action="SnimiPrikljucak" ajax-poziv="ne">
+    <div class="row ">
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="GradID">Grad</label>
+                <select asp-for="GradID" class="form-control">
+                    <option>Odaberi grad</option>
+                    @foreach (Grad g in gradovi)
+                {
+                    <option value="@g.Id">@g.Naziv</option>
+
+            }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adresa">Adresa</label>
+                <input asp-for="Adresa" class="form-control" />
+                <span asp-validation-for="Adresa" class="text-danger"></span>
+            </div>
+            <br />
+            <input id="snimi" class=" btn btn-primary" type="submit" value="Snimi" />
+        </div>
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="Parcela">Parcela</label>
+                <input asp-for="Parcela" class="form-control" />
+                <span asp-validation-for="Parcela" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datum">Datum</label>
+                <input value="" asp-for="Datum" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger"></span>
+            </div>
+
+            <input asp-for="KlijentID" value="@Model.KlijentID" type="hidden" />
+        </div>
+
+    </div>
+</form>
+<br />
+<script>
+
+</script>

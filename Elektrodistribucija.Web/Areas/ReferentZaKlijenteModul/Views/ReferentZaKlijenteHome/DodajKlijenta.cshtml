@@ -1,0 +1,61 @@
+﻿
+@model Elektrodistribucija.Web.Areas.ReferentZaKlijenteModul.ViewModels.KlijentiVM
+@using Elektrodistribucija.Data.Models;
+@{ 
+    List<Grad> gradovi = (List<Grad>) ViewData["gradovi"];
+}
+
+<form asp-action="SnimiKlijenta" ajax-poziv="ne">
+    <div class="row ">
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="Ime">Ime</label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime">Prezime</label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="JMBG">JMBG</label>
+                <input asp-for="JMBG" class="form-control" />
+                <span asp-validation-for="JMBG" class="text-danger">
+
+                </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefon">Telefon</label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            </div>
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="GradID">Grad</label>
+                <select asp-for="GradID" class="form-control">
+                    <option>Odaberi grad</option>
+                    @foreach (Grad g in gradovi)
+        {
+            <option value="@g.Id">@g.Naziv</option>
+
+}
+                </select>
+                <span asp-validation-for="GradID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+               <label asp-for="Adresa">Adresa</label>
+                <input asp-for="Adresa" class="form-control" />
+                <span asp-validation-for="Adresa" class="text-danger"></span>
+            </div>
+            <br />
+            <input id="snimi" class=" btn btn-primary" type="submit" value="Snimi" />
+        </div>
+    </div>
+</form>
+<br />
+<script>
+
+</script>

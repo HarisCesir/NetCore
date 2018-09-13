@@ -1,0 +1,51 @@
+﻿@using Elektrodistribucija.Data.Models;
+@using System
+@using System.Collections.Generic
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutReferentZaKlijente.cshtml";
+
+    Klijenti klijent = (Klijenti)ViewData["Klijent"];
+}
+
+@model List<Prikljucak>
+
+<br />
+<a asp-action="DodajPrikljucak" asp-route-KlijentID="@klijent.Id" ajax-poziv="da" ajax-rezultat="DodajDiv" class="btn btn-primary">Dodaj Prikljucak</a>
+
+<div id="DodajDiv">
+
+</div>
+
+<h2>Priključci za Klijenta: @klijent.Ime @klijent.Prezime</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Datum priključka</th>
+            <th>Grad</th>
+            <th>Adresa</th>
+            <th>Parcela</th>
+            
+
+
+        </tr>
+    </thead>
+    <tbody>
+        
+            @foreach (Prikljucak p in Model)
+            {<tr>
+    <td>@p.DatumPrikljucenja.ToShortDateString()</td>
+    <td>@p.Grad.Naziv</td>
+    <td>@p.Adresa</td>
+    <td>@p.Parcela</td>
+    <td><a class="btn btn-primary" asp-route-PrikljucakID="@p.Id" ajax-poziv="da" ajax-rezultat="DodajDiv" asp-action="PrivremenoIskljucenje">Privremeno iskljucenje</a></td>
+    <td><a class="btn btn-primary" asp-route-PrikljucakID="@p.Id" ajax-poziv="da" ajax-rezultat="DodajDiv" asp-action="Brojilo">Brojilo</a></td>
+    
+    <td> <a id="opomene" asp-action="Opomene" asp-route-PrikljucakID="@p.Id" class="btn btn-danger">Opomene</a> </td>
+    <td> <a id="racuni" href="Racuni?PrikljucakID=@p.Id" class="btn btn-danger">Racuni</a> </td>
+</tr> }
+        
+    </tbody>
+</table>
+

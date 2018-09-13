@@ -1,0 +1,39 @@
+﻿@using Elektrodistribucija.Data.Models
+@using System
+@using System.Collections.Generic
+@using Elektrodistribucija.Data.Models
+@using Elektrodistribucija.Web.Areas.AdministratorModul.ViewModels
+
+@{
+    ViewData["Title"] = "Prikazi";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+@model List<Direkcija>
+<h2>Direkcije</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>Adresa</th>
+            <th>Grad</th>
+            <th>Postanski broj</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Direkcija k in Model)
+        {
+        <tr>
+
+            <td>@k.Adresa</td>
+            <td>@k.Grad.Naziv</td>
+            <td>@k.Grad.PostanskiBroj</td>
+            <td> <a id="obrisi" href="Obrisi?id=@k.Id" class="btn btn-danger">Obriši</a> </td>
+
+        </tr>
+
+        }
+    </tbody>
+</table>

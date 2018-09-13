@@ -1,0 +1,50 @@
+﻿
+@using Elektrodistribucija.Data.Models
+@using System
+@using System.Collections.Generic
+@using Elektrodistribucija.Web.ViewModels
+@using Elektrodistribucija.Web.Areas.AdministratorModul.ViewModels
+@{
+    ViewData["Title"] = "Prikazi";
+   
+
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+
+}
+@model List<KorisniciPrikaziVM>
+
+<h2>Svi korisnici sistema elektrodistribucije</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+          
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Adresa</th>
+            <th>Telefon</th>
+            <th>JMBG</th>
+            <th>Tip korisnika</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (KorisniciPrikaziVM k in Model)
+        {
+        <tr>
+
+            <td>@k.Ime</td>
+            <td>@k.Prezime</td>
+            <td>@k.Adresa</td>
+            <td>@k.Telefon</td>
+            <td>@k.JMBG</td>
+            <td>@k.Uloga</td>
+           
+
+            <td> <a id="obrisi" href="Obrisi?id=@k.KorisniciPrikaziID" class="btn btn-danger">Obriši</a> </td>
+            <td>  <a asp-action="Izmjeni" asp-route-id="@k.KorisniciPrikaziID" class="btn btn-danger">Izmjeni</a></td>
+        </tr>
+
+        }
+    </tbody>
+</table>

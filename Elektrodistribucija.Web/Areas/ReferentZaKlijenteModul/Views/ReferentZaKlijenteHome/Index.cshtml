@@ -1,0 +1,48 @@
+﻿@using Elektrodistribucija.Data.Models;
+@using System
+@using System.Collections.Generic
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutReferentZaKlijente.cshtml";
+}
+
+@model List<Klijenti>
+<h2>Klijenti</h2>
+
+<a asp-action="DodajKlijenta" ajax-poziv="da" ajax-rezultat="DodajDiv" class="btn btn-primary">Dodaj klijenta</a>
+
+<div id="DodajDiv">
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>JMBG</th>
+            <th>Telefon</th>
+            <th>Grad</th>
+            <th>Adresa</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+       
+            @foreach (Klijenti k in Model)
+            {<tr>
+                <td>@k.Ime</td>
+                <td>@k.Prezime</td>
+                <td>@k.JMBG</td>
+                <td>@k.Telefon</td>
+                <td>@k.Grad.Naziv</td>
+                <td>@k.Adresa</td>
+                <td><a class="btn btn-primary" asp-route-KlijentID="@k.Id" asp-area="ReferentZaKlijenteModul" asp-controller="Prikljucci" asp-action="Prikazi">Priključci</a></td>
+                
+           </tr>
+            }
+        
+    </tbody>
+</table>
+

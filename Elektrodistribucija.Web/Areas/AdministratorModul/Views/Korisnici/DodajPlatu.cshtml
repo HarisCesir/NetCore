@@ -1,0 +1,35 @@
+﻿
+@model Elektrodistribucija.Web.Areas.AdministratorModul.ViewModels.PlataVM
+
+  <h2>Trenutna plata </h2>
+<form asp-action="SnimiPlatu" ajax-poziv="ne">
+    <div class="row ">
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="Osnova">Osnovica</label>
+                <input asp-for="Osnova" value="@Model.Osnova" class="form-control" />
+                <span asp-validation-for="Osnova" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bonus">Bonus</label>
+                <input asp-for="Bonus" value="@Model.Bonus" class="form-control" />
+                <span asp-validation-for="Bonus" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <label >Ukupno</label>
+                <input value="@Model.Ukupno" readonly class="form-control" />
+               
+            </div>
+
+            <input asp-for="KorisnickiNalogID" value="@Model.KorisnickiNalogID" type="hidden" />
+            <br />
+            <input id="snimi" class=" btn btn-primary" type="submit" value="Snimi platu" />
+        </div>
+        </div>
+</form>
+<br />
+<script>
+
+</script>

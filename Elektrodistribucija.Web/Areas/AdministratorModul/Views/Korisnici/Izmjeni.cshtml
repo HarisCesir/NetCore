@@ -1,0 +1,105 @@
+﻿@using Elektrodistribucija.Web.Areas.AdministratorModul.ViewModels
+@using Elektrodistribucija.Data.Models
+@{
+    ViewData["Title"] = "Izmjeni";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+}
+@model KorisniciDodajVM
+<h2>Izmjeni korisnika </h2>
+
+<div class="container">
+    <form asp-action="Update" asp-controller="Korisnici">
+        <div class="row ">
+            <div class="col col-lg-6">
+               
+
+                <div class="form-group">
+                    <label> Ime</label>
+                    <div>
+
+                        <input value="@Model.Ime" asp-for="Ime" class="form-control" />
+                        <span asp-validation-for="Ime" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label> Prezime</label>
+                    <div>
+                        <input value="@Model.Prezime" asp-for="Prezime" class="form-control" />
+                        <span asp-validation-for="Prezime" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label> Telefon</label>
+                    <div>
+                        <input value="@Model.Telefon" asp-for="Telefon" type="tel" class="form-control" />
+                        <span asp-validation-for="Telefon" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label> JMBG</label>
+                    <div>
+                        <input value="@Model.JMBG" asp-for="JMBG" type="number" class="form-control" />
+                        <span asp-validation-for="JMBG" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label> Adresa</label>
+                    <div>
+                        <input value="@Model.Adresa" asp-for="Adresa" class="form-control" />
+                        <span asp-validation-for="Adresa" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col col-lg-6">
+                <div class="form-group">
+                    <label> Korisnicko ime</label>
+                    <div>
+                        <input value="@Model.KorisnickoIme" readonly asp-for="KorisnickoIme" class="form-control" />
+                        <span asp-validation-for="KorisnickoIme" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label> Lozinka</label>
+                    <div>
+                        <input value="@Model.Lozinka" asp-for="Lozinka" type="password" class="form-control" />
+                        <span asp-validation-for="Lozinka" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tip korisnika</label>
+                    <select  asp-for="UlogaId" class="form-control">
+                        <option>Odaberite tip korisnika</option>
+                        @foreach (Uloge k in Model.uloge)
+                        {
+                            if (k.Id == Model.UlogaId)
+                            {
+                                <option selected value="@k.Id">@k.NazivUloge</option>
+
+                            }
+                            else
+                            {
+                            <option value="@k.Id">@k.NazivUloge</option>
+                            }
+                        }
+
+
+                    </select>
+                    <span asp-validation-for="UlogaId" class="text-danger"></span>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <input class="btn btn-primary btn-block" type="submit" value="Snimi" />
+    </form>
+    </div>

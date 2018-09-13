@@ -1,0 +1,39 @@
+﻿@model  Elektrodistribucija.Web.Areas.ReferentZaKlijenteModul.ViewModels.PrivremenoIskljucenjeVM
+
+
+
+
+
+<form asp-action="SnimiPrivremenoIskljucenje" ajax-poziv="ne">
+    <div class="row ">
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="Datum">Datum</label>
+                <input asp-for="Datum" type="date" value="@Model.Datum.ToShortDateString()" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Razlog">Razlog</label>
+                <textarea asp-for="Razlog" class="form-control"> @Model.Razlog</textarea>
+                <span asp-validation-for="Razlog" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+
+                <input asp-for="PrikljucakID" value="@Model.PrikljucakID" type="hidden" class="form-control" />
+
+            </div>
+
+
+            <br />
+            <input id="snimi" class=" btn btn-primary" type="submit" value="Snimi Privremeno iskljucenje" />
+
+           
+        </div>
+    </div>
+</form>
+<br />
+<script>
+
+</script>

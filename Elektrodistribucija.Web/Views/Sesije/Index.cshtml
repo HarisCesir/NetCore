@@ -1,0 +1,49 @@
+﻿@using Elektrodistribucija.Web.Helper
+@model Elektrodistribucija.Web.ViewModels.SesijaIndexVM
+@{
+    ViewData["Title"] = "Index";
+    string permisija = (string)ViewData["permisija"];
+    if(permisija=="Administrator")
+    {
+        Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+
+    }
+    if(permisija=="Serviser")
+    {
+        Layout= "~/Views/Shared/_LayoutServiser.cshtml";
+
+    }
+}
+
+<h2>Aktivne sesije za korisnika @Context.GetLogiraniKorisnik().KorisnickoIme</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Vrijeme</th>
+            <th>IP Adresa</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model.Rows)
+        {
+            <tr>
+                <td>@x.VrijemeLogiranja
+                @if(x.token==Model.TrenutniToken)
+                {
+                    <strong>(trenutna sesija)</strong>
+
+                }
+                </td>
+                <td>@x.IPAdresa</td>
+                <td>
+                    <a asp-action="Obrisi" asp-route-token="@x.token" class="btn btn-danger">Obriši</a>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+

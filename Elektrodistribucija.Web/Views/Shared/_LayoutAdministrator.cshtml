@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Elektrodistribucija.Data.Models
+@using Elektrodistribucija.Web.Helper
+@{ 
+    KorisnickiNalog korisnik = Context.GetLogiraniKorisnik();
+   
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Elektrodistribucija</title>
+
+    <environment include="Development">
+
+    </environment>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="/js/site.js"></script>*@
+    <script src="~/jsFIT.js"></script>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a asp-area="AdministratorModul" asp-controller="AdministratorHome" asp-action="Index">Početna</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Korisnici <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="AdministratorModul" asp-controller="Korisnici" asp-action="Dodaj">Dodaj korisnika</a></li>
+                            <li><a asp-area="AdministratorModul" asp-controller="Korisnici" asp-action="Prikazi">Prikaži korisnike</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Direkcije <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="AdministratorModul" asp-controller="Direkcije" asp-action="Dodaj">Dodaj direkciju</a></li>
+                            <li><a asp-area="AdministratorModul" asp-controller="Direkcije" asp-action="Prikazi">Prikazi direkcije</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Odjeli <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="AdministratorModul" asp-controller="Odjel" asp-action="Dodaj">Dodaj odjel</a></li>
+                            <li><a asp-area="AdministratorModul" asp-controller="Odjel" asp-action="Prikazi">Prikazi odjele</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li><a asp-area="" asp-controller="Sesije" asp-action="Index">Sesije</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li> <a>Dobro došli @korisnik.KorisnickoIme </a></li>
+                    <li>
+
+                        <a asp-area="" asp-controller="Login" asp-action="Logout">
+                            Odjava
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2017 - Elektrodistribucija</p>
+        </footer>
+    </div>
+
+    
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

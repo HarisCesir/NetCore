@@ -1,0 +1,26 @@
+﻿@using Elektrodistribucija.Data.Models
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@{
+    ViewData["Title"] = "Izmjeni";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+}
+@model Oprema
+
+<h2>Izmjeni</h2>
+
+<div class="container">
+
+    <form asp-action="SnimiIzmjene" asp-contrller="OpremaController">
+
+        <div class="form-group">
+            <label>Naziv</label>
+            <input asp-for="Naziv" class="form-control" />
+            <span asp-validation-for="Naziv" class="text-danger"></span>
+
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <input class="btn btn-primary btn-block" type="submit" value="Snimi" />
+
+    </form>
+
+</div>

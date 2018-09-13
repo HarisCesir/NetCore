@@ -1,0 +1,48 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@using Elektrodistribucija.Data.Models
+@using System.Collections.Generic
+
+@{
+    ViewData["Title"] = "Prikazi";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+
+
+}
+@model List<Intervencija>
+
+<h2>Intervencija</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lokacija</th>
+            <th>Datum intervencije</th>
+            <th>Dezurni serviser</th>
+            <th>Koristena oprema</th>
+            <th>Alat</th>
+            <th>Troskovi intervencije</th>
+            <th>Vremensko trajanje intervencije</th>
+            <th>Opis prijave kvara</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Intervencija k in Model)
+        {
+        <tr>
+            <td>@k.Lokacija</td>
+            <td>@k.Datum</td>
+            <td>@k.Serviser.Ime @k.Serviser.Prezime </td>
+            <td>@k.Oprema.Naziv</td>
+            <td>@k.Alati</td>
+            <td>@k.Troskovi</td>
+            <td>@k.Trajanje</td>
+            <td>@k.PrijavaKvara.Opis</td>
+            <td> <a id="obrisi" href="Obrisi?id=@k.Id" class="btn btn-danger">Obriši</a> </td>
+            <td> <a id="Izmjeni" href="Izmjeni?id=@k.Id" class="btn btn-danger">Izmjeni</a> </td>
+        </tr>
+
+        }
+    </tbody>
+</table>

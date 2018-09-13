@@ -1,0 +1,36 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@using Elektrodistribucija.Data.Models
+
+
+
+@{
+    ViewData["Title"] = "Prikazi";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+
+  
+}
+
+
+<h2>Prikazi sve Opreme</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv Opreme</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ( Oprema k in Model)
+        {
+        <tr>
+            <td>@k.Naziv</td>
+
+            <td> <a id="Obrisi" href="Obrisi?id=@k.Id" class="btn btn-danger">Obriši</a> </td>
+            <td> <a id="Izmjeni" href="Izmjeni?id=@k.Id" class="btn btn-danger">Izmjeni</a> </td>
+        </tr>
+
+        }
+    </tbody>
+</table>

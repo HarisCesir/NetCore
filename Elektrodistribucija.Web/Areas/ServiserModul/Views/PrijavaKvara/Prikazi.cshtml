@@ -1,0 +1,39 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@using Elektrodistribucija.Data.Models
+
+@{
+    ViewData["Title"] = "Prikazi";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+
+
+}
+@model List<PrijavaKvara>
+
+<h2>Prijava Kvara</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Opis prijave kvara</th>
+            <th>Tip Kvara</th>
+            <th>Adresa prikljucka</th>
+            <th>Datum prijave</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (PrijavaKvara k in Model)
+        {
+        <tr>
+            <td>@k.Opis</td>
+            <td>@k.TipKvara.Naziv</td>
+            <td>@k.Prikljucak.Adresa</td>
+            <td>@k.Datum</td>
+            <td> <a id="obrisi" href="Obrisi?id=@k.Id" class="btn btn-danger">Obriši</a> </td>
+            <td> <a id="Izmjeni" href="Izmjeni?id=@k.Id" class="btn btn-danger">Izmjeni</a> </td>
+        </tr>
+
+        }
+    </tbody>
+</table>

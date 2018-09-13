@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Opomene";
+    Layout = "~/Views/Shared/_LayoutReferentZaKlijente.cshtml";
+    int prikljucakID = Convert.ToInt32(TempData["prikljucakid"]);
+}
+@using Elektrodistribucija.Data.Models
+@model List<Opomena>
+<h2>Opomene</h2>
+<br />
+<a asp-action="DodajOpomenu" ajax-poziv="da" asp-route-prikljucakID=@prikljucakID ajax-rezultat="DodajDiv" class="btn btn-primary">Dodaj Opomenu</a>
+
+<div id="DodajDiv">
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Sadrzaj</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Opomena o in Model)
+        {
+            <tr>
+                <td>@o.Datum</td>
+                <td>@o.Sadrzaj</td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>

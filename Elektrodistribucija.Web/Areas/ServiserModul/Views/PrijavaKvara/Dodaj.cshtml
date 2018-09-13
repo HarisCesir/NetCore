@@ -1,0 +1,51 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@using Elektrodistribucija.Data.Models
+@{
+    ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+    List<TipKvara> tipKvaras = (List<TipKvara>)ViewData["tipkvara"];
+    List<Prikljucak> prikljucaks = (List<Prikljucak>)ViewData["prikljucak"];
+}
+@model PrijavaKvaraVM
+<h2>Dodaj</h2>
+<div class="container">
+    <form asp-action="Snimi" asp-controller="PrijavaKvara">
+        <div class="form-group">
+            <label>Opis prijave kvara:</label>
+            <input asp-for="Opis" class="form-control" />
+            <span asp-validation-for="Opis" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>Datum prijave:</label>
+            <input asp-for="Datum" class="form-control" />
+            <span asp-validation-for="Datum" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+
+            <select asp-for="TipKvaraID" class="form-control">
+                <option>Odaberite tip kvara</option>
+                @foreach (TipKvara d in tipKvaras)
+                {
+                    <option value="@d.Id">@d.Naziv</option>
+
+                }
+            </select>
+            <span asp-validation-for="TipKvaraID" class="text-danger"></span>
+        </div
+        <div class="form-group">
+
+            <select asp-for="PrikljucakID" class="form-control">
+                <option>Odaberite prikljucak</option>
+                @foreach (Prikljucak d in prikljucaks)
+                {
+                    <option value="@d.Id">@d.Adresa</option>
+
+                }
+            </select>
+            <span asp-validation-for="PrikljucakID" class="text-danger"></span>
+        </div>
+        <input class="btn btn-primary btn-block" type="submit" value="Snimi" />
+    </form>
+</div>

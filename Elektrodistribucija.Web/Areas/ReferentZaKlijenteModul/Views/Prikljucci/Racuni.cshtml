@@ -1,0 +1,46 @@
+﻿@using Elektrodistribucija.Data.Models
+@{
+    ViewData["Title"] = "Racuni";
+    Layout = "~/Views/Shared/_LayoutReferentZaKlijente.cshtml";
+}
+@model List<Racun>
+
+    
+<br />
+
+<h2>Ukupan dug: @ViewData["dug"]</h2>
+<br />
+<h2>Racuni</h2>
+
+
+<div id="DodajDiv">
+
+</div>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Mjesec</th>
+            <th>Potrošnja skupa</th>
+            <th>Potrošnja jeftina</th>
+            <th>Iznos racuna</th>
+            <th>Dug</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(Racun r in Model)
+        {
+        <tr>
+            <td>@r.Mjesec</td>
+            <td>@r.Potrosnja_Skupa</td>
+            <td>@r.Potrosnja_jeftina</td>
+            <td>@r.Ukupno</td>
+            <td>@r.Dug</td>
+            <td><a asp-action="PlatiRacun" ajax-poziv="da" asp-route-BrojiloID=@r.BrojiloID ajax-rezultat="DodajDiv" class="btn btn-primary">Plati racun</a></td>
+
+        </tr>
+
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model Elektrodistribucija.Web.Areas.ReferentZaKlijenteModul.ViewModels.BrojiloVM
+
+
+
+
+
+<form asp-action="SnimiBrojilo" ajax-poziv="ne">
+    <div class="row ">
+        <div class="col col-lg-6">
+            <div class="form-group">
+                <label asp-for="Datum">Datum</label>
+                <input asp-for="Datum" value="@Model.Datum.ToShortDateString()" class="form-control" />
+                <span asp-validation-for="Datum" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StaroStanjeJeftina">Staro stanje jeftina</label>
+                <input asp-for="StaroStanjeJeftina" readonly class="form-control" value="@Model.StaroStanjeJeftina" />
+                <span asp-validation-for="StaroStanjeJeftina" class="text-danger">
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StatoStanjeSkupa">Staro stanje skupa</label>
+                <input asp-for="StatoStanjeSkupa" readonly class="form-control" value="@Model.StatoStanjeSkupa" />
+                <span asp-validation-for="StatoStanjeSkupa" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrenutnoStanjeJeftina">Trenutno stanje jeftina</label>
+                <input asp-for="TrenutnoStanjeJeftina" class="form-control" value="@Model.TrenutnoStanjeJeftina" />
+                <span asp-validation-for="TrenutnoStanjeJeftina" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrenutnoStanjeSkupa">Trenutno stanje skupa</label>
+                <input asp-for="TrenutnoStanjeSkupa" class="form-control" value="@Model.TrenutnoStanjeSkupa" />
+                <span asp-validation-for="TrenutnoStanjeSkupa" class="text-danger">
+                </span>
+            </div>
+            <div class="form-group">
+
+                <input asp-for="PrikljucakID" value="@Model.PrikljucakID" type="hidden" class="form-control" />
+                <input asp-for="BrojiloID" value="@Model.BrojiloID" type="hidden" class="form-control" />
+            </div>
+
+
+            <br />
+            <input id="snimi" class=" btn btn-primary" type="submit" value="Snimi Brojilo" />
+
+
+        </div>
+    </div>
+</form>
+<br />
+<script>
+
+</script>

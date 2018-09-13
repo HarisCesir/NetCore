@@ -1,0 +1,17 @@
+﻿
+
+@using Elektrodistribucija.Data.Models;
+@model Uplata
+<form asp-action="SnimiUplatu" ajax-poziv="ne">
+
+    <div class="form-group">
+        <label asp-for="Iznos"></label>
+        <input asp-for="Iznos" class="form-control" />
+        <span asp-validation-for="Iznos" class="text-danger">
+
+        </span>
+    </div>
+    
+    <input asp-for="BrojiloID" value="@Model.BrojiloID" type="hidden" />
+    <input id="plati" class=" btn btn-primary" type="submit" value="Plati" />
+</form>

@@ -1,0 +1,38 @@
+﻿@using Elektrodistribucija.Data.Models
+@using Elektrodistribucija.Web.Areas.AdministratorModul.ViewModels
+   
+@{ ViewData["Title"] = "Dodaj";
+    Layout = "~/Views/Shared/_LayoutAdministrator.cshtml";
+    List<Direkcija> direkcije = (List<Direkcija>)ViewData["direkcije"];
+}
+@model DodajOdjelVM
+<h2>Dodaj</h2>
+
+<div class="container">
+    <form asp-action="Snimi" asp-controller="Odjel">
+    <div class="form-group">
+        <label>Adresa odjela:</label>
+    <input asp-for="Adresa" class="form-control" />
+        <span asp-validation-for="Adresa" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Svrha:</label>
+        <input asp-for="Svrha" class="form-control" />
+        <span asp-validation-for="Svrha" class="text-danger"></span>
+    </div>
+        <div class="form-group">
+            
+         <select asp-for="DirekcijaID" class="form-control">
+             <option>Odaberite direkciju</option>
+             @foreach(Direkcija d in direkcije)
+             {
+                 <option value="@d.Id">@d.Adresa</option>
+
+             }
+         </select>
+            <span asp-validation-for="DirekcijaID" class="text-danger"></span>
+        </div>
+
+        <input class="btn btn-primary btn-block" type="submit" value="Snimi" />
+        </form>
+</div>

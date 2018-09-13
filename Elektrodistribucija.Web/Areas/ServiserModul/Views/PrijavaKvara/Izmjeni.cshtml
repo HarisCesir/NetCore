@@ -1,0 +1,26 @@
+﻿@using Elektrodistribucija.Data.Models
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@{
+    ViewData["Title"] = "Izmjeni";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+}
+@model PrijavaKvara
+<h2>Izmjeni</h2>
+<div class="container">
+    <form asp-action="SnimiIzmjene" asp-contrller="TipKvaraController">
+        <div class="form-group">
+            <label>Opis</label>
+            <input asp-for="Opis" class="form-control" />
+            <span asp-validation-for="Opis" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+
+        <div class="form-group">
+            <label>Naziv</label>
+            <input asp-for="TipKvara" class="form-control" />
+            <span asp-validation-for="TipKvara" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <input class="btn btn-primary btn-block" type="submit" value="Snimi" />
+    </form>
+</div>

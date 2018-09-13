@@ -1,0 +1,81 @@
+﻿@using Elektrodistribucija.Data.Models
+@using Elektrodistribucija.Web.Areas.ServiserModul.Models
+@{
+    ViewData["Title"] = "Izmjeni";
+    Layout = "~/Views/Shared/_LayoutServiser.cshtml";
+    List<Serviser> servisers = (List<Serviser>)ViewData["serviser"];
+    List<PrijavaKvara> prijavaKvaras = (List<PrijavaKvara>)ViewData["prijavakvara"];
+    List<Oprema> opremas = (List<Oprema>)ViewData["oprema"];
+}
+@model Intervencija
+<h2>Izmjeni</h2>
+<div class="container">
+    <form asp-action="SnimiIzmjene" asp-contrller="TipKvaraController">
+        <div class="form-group">
+            <label>Alat</label>
+            <input asp-for="Alati" class="form-control" />
+            <span asp-validation-for="Alati" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <div class="form-group">
+            <label>Lokacija</label>
+            <input asp-for="Lokacija" class="form-control" />
+            <span asp-validation-for="Lokacija" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <div class="form-group">
+            <label>Oprema</label>
+            <input asp-for="Oprema" class="form-control" />
+            <span asp-validation-for="Oprema" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <div class="form-group">
+            <label>Oprema</label>
+            <select asp-for="OpremaID" class="form-control">
+                <option>Odaberite opremu </option>
+                @foreach (Oprema k in opremas)
+                {
+                    <option value="@k.Id">@k.Naziv</option>
+                }
+            </select>
+            <span asp-validation-for="OpremaID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Serviser</label>
+            <select asp-for="ServiserID" class="form-control">
+                <option>Odaberite servisera </option>
+                @foreach (Serviser k in servisers)
+                {
+                    <option value="@k.Id">@k.Ime @k.Prezime</option>
+                }
+            </select>
+            <span asp-validation-for="ServiserID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>PrijavaKvara</label>
+            <select asp-for="PrijavaKvaraID" class="form-control">
+                <option>Odaberite prijavu kvara </option>
+                @foreach (PrijavaKvara k in prijavaKvaras)
+                {
+                    <option value="@k.Id">@k.Opis</option>
+                }
+            </select>
+            <span asp-validation-for="PrijavaKvaraID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Trajanje</label>
+            <input asp-for="Trajanje" class="form-control" />
+            <span asp-validation-for="Trajanje" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <div class="form-group">
+            <label>Troskovi</label>
+            <input asp-for="Troskovi" class="form-control" />
+            <span asp-validation-for="Troskovi" class="text-danger"></span>
+            <input asp-for="Id" type="hidden" />
+        </div>
+        <input class="btn btn-primary btn-block" type="submit" value="Snimi" />
+    </form>
+</div>
